@@ -29,9 +29,9 @@ class Collection:
             "query": query,
             "variables": variables
         }
-        return self.client.graphql.post(payload)  # Assuming this is corrected to match the method signature
+        return self.client.graphql.post(payload)
     
-    def create(self, title: str, description: str, seo_title: str, seo_description: str, image_url: Optional[str], image_src: Optional[str], publication_ids: List[str]) -> Response:
+    def create(self, title: str, description: str, seo_title: str, seo_description: str, publication_ids: List[str]) -> Response:
         mutation = """
         mutation collectionCreate($input: CollectionInput!) {
             collectionCreate(input: $input) {
@@ -69,7 +69,7 @@ class Collection:
             "query": mutation,
             "variables": variables
         }
-        return self.client.post(payload)
+        return self.client.graphql.post(payload)
     
     def publish(self, collection_id: str, publication_ids: List[str]) -> Response:
         mutation = """
@@ -94,4 +94,4 @@ class Collection:
             "query": mutation,
             "variables": variables
         }
-        return self.client.post(payload)
+        return self.client.graphql.post(payload)
