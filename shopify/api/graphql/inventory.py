@@ -1,10 +1,11 @@
 from typing import List, Any, Optional
-from ..client import ShopifyClient
 from requests import Response
+
+
 
 class Inventory:
     
-    def __init__(self, shopify_client: ShopifyClient): 
+    def __init__(self, shopify_client): 
         self.client = shopify_client
     
     def _validate_quantities_list(self, set_quantities_list: List[Any]):
